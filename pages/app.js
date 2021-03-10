@@ -1,10 +1,10 @@
 import admin from "firebase-admin";
 import firebase from "firebase/app";
 import {
-	AuthAction,
-	useAuthUser,
-	withAuthUser,
-	withAuthUserTokenSSR
+  AuthAction,
+  useAuthUser,
+  withAuthUser,
+  withAuthUserTokenSSR,
 } from "next-firebase-auth";
 import Head from "next/head";
 import { useState } from "react";
@@ -13,11 +13,11 @@ import BotDashboard from "../components/botDashboard";
 import BotMenu from "../components/botMenu";
 import HeaderBar from "../components/headerBar";
 import {
-	deleteModel,
-	getSecretKey,
-	getTemplate,
-	TEMPLATES,
-	trainModel
+  deleteModel,
+  getSecretKey,
+  getTemplate,
+  TEMPLATES,
+  trainModel,
 } from "../utils/chatApi";
 import { makeKeyGenerator } from "../utils/keyGen";
 
@@ -41,7 +41,7 @@ function App({ userBots, userKey }) {
       {
         uid: keyGen("bb"),
         name: "new bot",
-				isTrained: false,
+        isTrained: false,
         intents: [
           {
             uid: keyGen("qg"),
@@ -57,7 +57,7 @@ function App({ userBots, userKey }) {
 
     setBots(newState);
 
-		setCurrentBotIndex(bots.length)
+    setCurrentBotIndex(bots.length);
   };
 
   const removeBot = () => {
@@ -130,11 +130,11 @@ function App({ userBots, userKey }) {
 
   const addIntents = (newIntents) => {
     let oldBot = bots[currentBotIndex];
-		if (oldBot.intents) {
-			oldBot.intents = [...oldBot.intents, ...newIntents]
-		} else {
-			oldBot.intents = [...newIntents];
-		}
+    if (oldBot.intents) {
+      oldBot.intents = [...oldBot.intents, ...newIntents];
+    } else {
+      oldBot.intents = [...newIntents];
+    }
 
     const newState = [
       ...bots.slice(0, currentBotIndex),
@@ -252,9 +252,9 @@ function App({ userBots, userKey }) {
     setBots(newState);
   };
 
-	const setBotTrained = () => {
-		let oldBot = bots[currentBotIndex];
-    oldBot.isTrained = true
+  const setBotTrained = () => {
+    let oldBot = bots[currentBotIndex];
+    oldBot.isTrained = true;
 
     const newState = [
       ...bots.slice(0, currentBotIndex),
@@ -265,7 +265,7 @@ function App({ userBots, userKey }) {
     ref.set(newState);
 
     setBots(newState);
-	}
+  };
 
   const trainBot = async () => {
     setTraining(true);
@@ -280,146 +280,160 @@ function App({ userBots, userKey }) {
         window.alert(`Finished training ${botName}`);
         console.log(resJson);
 
-				setBotTrained()
+        setBotTrained();
 
         setTraining(false);
       });
   };
 
-	const generateEmbed = () => {
-		const embed = `<iframe style={{margin: 0, padding: 0, border: "none", width: "500px", height: "700px"}} src="https://colloquy.vercel.app/chat/${userKey}/${bots[currentBotIndex]["uid"]}" />`
-		window.alert(`Embed: ${embed}`)
-	}
+  const generateEmbed = () => {
+    const embed = `<iframe style={{margin: 0, padding: 0, border: "none", width: "500px", height: "700px"}} src="https://colloquy.vercel.app/chat/${userKey}/${bots[currentBotIndex]["uid"]}" />`;
+    window.alert(`Embed: ${embed}`);
+  };
 
-	const testBot = () => {
-		window.open(`/chat/${userKey}/${bots[currentBotIndex]["uid"]}`, "_blank")
-	}
+  const testBot = () => {
+    window.open(`/chat/${userKey}/${bots[currentBotIndex]["uid"]}`, "_blank");
+  };
 
-	return (
-		<>
-			<Head>
-				<title>Dashboard - Colloquy</title>
-				<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-				<link rel="manifest" href="/site.webmanifest"></link>
-			</Head>
-			<div className="text-gray-900 min-h-screen justify-between bg-gray-50">
-				<HeaderBar name={bots[currentBotIndex].name} />
-				<div className="grid grid-cols-5">
-					<div>
-						<BotMenu
-							bots={bots}
-							addBot={addBot}
-							renameBot={renameBot}
-							setCurrentBotIndex={setCurrentBotIndex}
-							currentBotIndex={currentBotIndex}
-						/>
-					</div>
-					<div className="col-span-4">
-						<BotDashboard
-							bots={bots}
-							currentBotIndex={currentBotIndex}
-							addGroup={addGroup}
-							removeGroup={removeGroup}
-							addQuestionAt={addQuestionAt}
-							changeAnswer={changeAnswer}
-							changeQuestion={changeQuestion}
-							changeTitle={changeTitle}
-							removeQuestionAt={removeQuestionAt}
-							removeBot={removeBot}
-							importTemplates={importTemplates}
-							trainBot={trainBot}
-							training={training}
-							testBot={testBot}
-							generateEmbed={generateEmbed}
-						/>
-					</div>
-				</div>
-				</div>
-		</>
+  return (
+    <>
+      <Head>
+        <title>Dashboard - Colloquy</title>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest"></link>
+      </Head>
+      <div className="text-gray-900 min-h-screen justify-between bg-gray-50">
+        <HeaderBar name={bots[currentBotIndex].name} />
+        <div className="grid grid-cols-5">
+          <div>
+            <BotMenu
+              bots={bots}
+              addBot={addBot}
+              renameBot={renameBot}
+              setCurrentBotIndex={setCurrentBotIndex}
+              currentBotIndex={currentBotIndex}
+            />
+          </div>
+          <div className="col-span-4">
+            <BotDashboard
+              bots={bots}
+              currentBotIndex={currentBotIndex}
+              addGroup={addGroup}
+              removeGroup={removeGroup}
+              addQuestionAt={addQuestionAt}
+              changeAnswer={changeAnswer}
+              changeQuestion={changeQuestion}
+              changeTitle={changeTitle}
+              removeQuestionAt={removeQuestionAt}
+              removeBot={removeBot}
+              importTemplates={importTemplates}
+              trainBot={trainBot}
+              training={training}
+              testBot={testBot}
+              generateEmbed={generateEmbed}
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
 function Loading() {
-	return (
-		<div className="flex justify-center items-center w-full h-full my-1/5">
-			<Loader color="#000" height={200} width={200} />
-		</div>
-	);
+  return (
+    <div className="flex justify-center items-center w-full h-full my-1/5">
+      <Loader color="#000" height={200} width={200} />
+    </div>
+  );
 }
 
 const arrayFromObject = (obj) => {
-	return Array.from(Object.keys(obj), (k, i) => obj[k]);
+  return Array.from(Object.keys(obj), (k, i) => obj[k]);
 };
 
 export const getServerSideProps = withAuthUserTokenSSR({
-	whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
+  whenUnauthed: AuthAction.REDIRECT_TO_LOGIN,
 })(async ({ AuthUser }) => {
-	const db = admin.database();
+  const db = admin.database();
 
-	const uid = AuthUser.id;
-	const bots = db.ref(`/bots/${uid}`);
-	const key = db.ref(`/keys/${uid}`);
+  const uid = AuthUser.id;
+  const bots = db.ref(`/bots/${uid}`);
+  const key = db.ref(`/keys/${uid}`);
 
-	let userBots = (await bots.get()).toJSON();
-	let userKey = (await key.get()).toJSON();
+  let userBots = (await bots.get()).toJSON();
+  let userKey = (await key.get()).toJSON();
 
-	if (userKey === null) {
-		const _key = await getSecretKey(AuthUser.email, AuthUser.id);
-		await key.set(_key);
+  if (userKey === null) {
+    const _key = await getSecretKey(AuthUser.email, AuthUser.id);
+    await key.set(_key);
 
-		userKey = (await key.get()).toJSON();
-	}
+    userKey = (await key.get()).toJSON();
+  }
 
-	if (userBots === null) {
-		await bots.set([
-			{
-				uid: keyGen("bb"),
-				name: "new bot",
-				isTrained: false,
-				intents: [
-					{
-						uid: keyGen("qg"),
-						tag: "",
-						patterns: [""],
-						responses: [""],
-					},
-				],
-			},
-		]);
+  if (userBots === null) {
+    await bots.set([
+      {
+        uid: keyGen("bb"),
+        name: "new bot",
+        isTrained: false,
+        intents: [
+          {
+            uid: keyGen("qg"),
+            tag: "",
+            patterns: [""],
+            responses: [""],
+          },
+        ],
+      },
+    ]);
 
-		userBots = (await bots.get()).toJSON();
-	}
+    userBots = (await bots.get()).toJSON();
+  }
 
-	userBots = arrayFromObject(userBots);
+  userBots = arrayFromObject(userBots);
 
-	for (const item of userBots) {
-		if (item["intents"]) {
-			item["intents"] = arrayFromObject(item["intents"]);
+  for (const item of userBots) {
+    if (item["intents"]) {
+      item["intents"] = arrayFromObject(item["intents"]);
 
-			for (const intent of item["intents"]) {
-				if (intent["patterns"]) {
-					intent["patterns"] = arrayFromObject(intent["patterns"]);
-				}
-				if (intent["responses"]) {
-					intent["responses"] = arrayFromObject(intent["responses"]);
-				}
-			}
-		}
-	}
+      for (const intent of item["intents"]) {
+        if (intent["patterns"]) {
+          intent["patterns"] = arrayFromObject(intent["patterns"]);
+        }
+        if (intent["responses"]) {
+          intent["responses"] = arrayFromObject(intent["responses"]);
+        }
+      }
+    }
+  }
 
-	return {
-		props: {
-			userBots,
-			userKey,
-		},
-	};
+  return {
+    props: {
+      userBots,
+      userKey,
+    },
+  };
 });
 
 export default withAuthUser({
-	whenAuthed: AuthAction.RENDER,
-	whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
-	whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
-	LoaderComponent: Loading,
+  whenAuthed: AuthAction.RENDER,
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  whenUnauthedBeforeInit: AuthAction.SHOW_LOADER,
+  LoaderComponent: Loading,
 })(App);

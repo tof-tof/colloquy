@@ -16,24 +16,24 @@ export default function BotDashboard({
   trainBot,
   training,
   importTemplates,
-	testBot,
-	generateEmbed
+  testBot,
+  generateEmbed,
 }) {
   const { intents: questionGroups, isTrained } = bots[currentBotIndex];
 
   return (
     <>
       <div className="mx-9 my-3">
-      <ButtonFooter
-				isTrained={isTrained}
-        removeBot={removeBot}
-        canDelete={bots.length !== 1}
-        trainBot={trainBot}
-        training={training}
-				testBot={testBot}
-        importTemplates={importTemplates}
-				generateEmbed={generateEmbed}
-      />
+        <ButtonFooter
+          isTrained={isTrained}
+          removeBot={removeBot}
+          canDelete={bots.length !== 1}
+          trainBot={trainBot}
+          training={training}
+          testBot={testBot}
+          importTemplates={importTemplates}
+          generateEmbed={generateEmbed}
+        />
         {questionGroups &&
           questionGroups.map((group, index) => (
             <QuestionCard
@@ -77,7 +77,6 @@ export default function BotDashboard({
           )}
         </span>
       </div>
-      
     </>
   );
 }
