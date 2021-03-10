@@ -1,12 +1,15 @@
 module.exports = {
-	purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+    enabled: true,
+    content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  },
 	darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
         primary: '#4855A9',
         secondary: '#D2D1FC',
-        'themeDarkBlue':'#1E2975'
+        'themeDarkBlue':'#1E2975',
       },
       margin: {
         '1/2': '50%',
