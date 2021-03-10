@@ -12,11 +12,12 @@ export default function Index() {
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/site.webmanifest"></link>
 			</Head>
-			<div className="h-screen">
-				<div className="text-8xl nav">
-					<h1 className="logo cursor-pointer" onClick={() => {
+			<div className="h-screen bg-gradient-to-br from-secondary via-transparent">
+				<div className="nav">
+					<h1 className="logo cursor-pointer text-7xl font-medium" onClick={() => {
 						router.push("/app")
 					}}>Colloquy</h1>
+					<h3 className="text-2xl italic text-themeDarkBlue ml-14">Start the conversation</h3>
 				</div>
 				<div className="mx-auto w-min pt-24">
 					<img className="splash" src='/assets/flat_background.svg'></img>

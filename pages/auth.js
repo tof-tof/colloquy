@@ -36,13 +36,13 @@ function Auth() {
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/site.webmanifest"></link>
 			</Head>
-			<div className="p-1/5 bg-gradient-to-r from-blue-500 via-indigo-400 to-blue-500">
-				<div className="mx-auto p-5 border rounded-xl shadow-lg w-min whitespace-pre space-y-5 bg-gray-50">
+			<div className="flex flex-col justify-center align-middle min-h-screen bg-gradient-to-br from-transparent via-secondary to-transparent text-primary ">
+				<div className=" mx-auto p-5 border rounded-xl shadow-lg w-min whitespace-pre space-y-5 bg-gray-50">
 					<h1 className="text-3xl text-center pb-3 font-medium">
 						Login or Register
         </h1>
 					<div className="mb-3">
-						<label className="block pl-1 font-light text-lg" htmlFor="Email">
+						<label className="block pl-1 font-light text-lg text-themeDarkBlue" htmlFor="Email">
 							Email
           </label>
 						<input
@@ -54,7 +54,7 @@ function Auth() {
 						/>
 					</div>
 					<div>
-						<label className="block pl-1  font-light text-lg" htmlFor="Password">
+						<label className="block pl-1 font-light text-lg text-themeDarkBlue" htmlFor="Password">
 							Password
           </label>
 						<input
@@ -67,7 +67,7 @@ function Auth() {
 					</div>
 					<div className="flex justify-center pt-4">
 						<button
-							className="btn py-2 focus:ring-blue-800 border-0 bg-blue-500 uppercase tracking-wider font-semibold text-white shadow-lg hover:bg-blue-400"
+							className="btn py-2 focus:ring-primary border-0 bg-primary uppercase tracking-wider font-semibold text-white shadow-lg hover:bg-themeDarkBlue"
 							onClick={() => handleSubmit()}
 						>
 							Submit

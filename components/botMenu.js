@@ -10,7 +10,7 @@ export default function BotMenu({
 
   return (
       <div className="border-4 border-gray-100 rounded-md p-3 bg-white my-3 shadow-md mx-2 fixed max-w-1/5" style={{width: "100%"}}>
-        <h1 className="text-2xl py-1 text-center px-3 mb-5">Your Bots</h1>
+        <h1 className="text-3xl py-1 text-center px-3 mb-5">Your Bots</h1>
         {bots.map((bot, index) =>
           editOn ? (
             currentBotIndex !== index ? (
@@ -43,7 +43,7 @@ export default function BotMenu({
                 setCurrentBotIndex(index);
               }}
               className={
-                currentBotIndex == index ? "menuText text-2xl bg-blue-100" : "menuText text-2xl"
+                currentBotIndex == index ? "menuText text-2xl bg-secondary bg-opacity-30" : "menuText text-2xl"
               }
             >
               {bot.name}

@@ -3,6 +3,11 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      colors: {
+        primary: '#4855A9',
+        secondary: '#D2D1FC',
+        'themeDarkBlue':'#1E2975'
+      },
       margin: {
         '1/2': '50%',
         '1/4': '25%',
@@ -20,7 +25,9 @@ module.exports = {
     }
   },
   variants: {
-    extend: {},
+    extend: {
+      borderColor:['active'],
+    },
   },
   plugins: [
 		require('@tailwindcss/forms'),

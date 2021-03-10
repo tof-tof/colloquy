@@ -12,7 +12,7 @@ export default function QuestionCard({
   id,
 }) {
   return (
-    <div className="border-4 border-blue-100 rounded-md p-3 bg-blue-50 mt-3 shadow-md">
+    <div className="border-4 border-secondary border-opacity-30 rounded-md p-3 bg-secondary mt-3 shadow-md bg-opacity-5">
       <input
         className="text-2xl inputBox mb-2 oneLineInput "
         value={title}

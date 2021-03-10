@@ -80,7 +80,7 @@ const Chat = () => {
 			</Head>
 
 			<div>
-				<div className="text-8xl nav">
+				<div className="nav">
 					<h1 className="logo cursor-pointer" onClick={() => {
 						router.push("/app")
 					}}>Colloquy</h1>				
