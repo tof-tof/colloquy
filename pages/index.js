@@ -39,8 +39,14 @@ export default function Index() {
           <h3 className="text-2xl italic text-themeDarkBlue ml-14">
             Start the conversation
           </h3>
+          <button
+            className="btn ml-14 mt-5 text-2xl text-semibold bg-primary hover:bg-themeDarkBlue text-white static bottom-10"
+            onClick={() => {
+              router.push("/app");
+            }}
+          > Build your bot!</button>
         </div>
-        <div className="mx-auto w-min pt-24">
+        <div className="mx-auto mb-auto w-min pt-24">
           <img className="splash" src="/assets/flat_background.svg"></img>
         </div>
       </div>
